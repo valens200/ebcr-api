@@ -13,6 +13,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -32,7 +33,6 @@ public class User extends InitiatorAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private UUID id;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -43,6 +43,8 @@ public class User extends InitiatorAudit {
     private String userName;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
     @Column(name = "email")
     private String email;
@@ -54,20 +56,15 @@ public class User extends InitiatorAudit {
     @Column(name = "gender")
     private Gender gender;
 
-    @Column(name = "rejection_description")
-    private String rejectionDescription;
-
 
     @JoinColumn(name = "profile_image_id")
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private File profileImage;
-
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<com.ebcr.models.Role> roles = new HashSet<>();
-
     @JsonIgnore
     @NotBlank
     @Column(name = "password")
