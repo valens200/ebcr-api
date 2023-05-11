@@ -49,6 +49,8 @@ public class User extends InitiatorAudit {
     @Column(name = "email")
     private String email;
 
+    private int activationCode;
+
     @Column(name = "national_id")
     private String nationalId;
 
