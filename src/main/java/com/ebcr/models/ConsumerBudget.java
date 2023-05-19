@@ -11,11 +11,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Paroisse {
+public class ConsumerBudget {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID paroisseId;
-    @ManyToOne
-    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
-    private Address address;
+    private UUID consumerBudgetId;
+
 }

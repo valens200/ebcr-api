@@ -1,5 +1,6 @@
 package com.ebcr.models;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +9,17 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class Paroisse {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID paroisseId;
-    @ManyToOne
-    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
-    private Address address;
+    private UUID addressId;
+    @Column(name = "country")
+    private String country = "Rwanda";
+    private String district;
+    private String sector;
+    private String cell;
+    private String village;
 }

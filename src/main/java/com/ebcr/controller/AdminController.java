@@ -21,6 +21,7 @@ public class AdminController {
        Admin admin = Mapper.getAdminFromAdminDTO(adminDTO, adminDTO.getPassword());
        return adminService.createAdmin(admin);
     }
+
     @GetMapping("all")
     public List<Admin> getAllAdmins(){
       return this.adminService.findAllAdmins();

@@ -72,6 +72,10 @@ public class User extends InitiatorAudit {
     @Column(name = "password")
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "addressId", referencedColumnName = "addressId")
+    private Address address;
+
     public User(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
