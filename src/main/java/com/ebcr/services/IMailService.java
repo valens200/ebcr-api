@@ -3,26 +3,23 @@ package com.ebcr.services;
 
 import com.ebcr.exceptions.BadRequestException;
 import com.ebcr.models.Admin;
-import com.ebcr.models.User;
 import com.ebcr.utils.types.Mail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
 
 @Service
 @Slf4j
-public class MailService {
+public class IMailService {
   @Value("${client.host}")
   private String clientHost;
 
@@ -32,7 +29,7 @@ public class MailService {
   private String appEmail;
 
   @Autowired
-  public MailService(JavaMailSender mailSender, SpringTemplateEngine templateEngine) {
+  public IMailService(JavaMailSender mailSender, SpringTemplateEngine templateEngine) {
     this.mailSender = mailSender;
     this.templateEngine = templateEngine;
   }

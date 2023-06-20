@@ -1,16 +1,13 @@
 package com.ebcr.configuration.filters;
-import com.ebcr.models.User;
-import com.ebcr.services.CustomUserDetailsService;
+import com.ebcr.services.ICustomUserDetailsService;
 import com.ebcr.utils.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import springfox.documentation.spi.service.contexts.SecurityContext;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -22,7 +19,7 @@ public class CustomAuthenticationFilter  extends OncePerRequestFilter {
     @Autowired
     private TokenGenerator tokenGenerator;
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private ICustomUserDetailsService customUserDetailsService;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         try{

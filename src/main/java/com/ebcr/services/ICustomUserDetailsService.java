@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Slf4j
-public class CustomUserDetailsService implements UserDetailsService {
+public class ICustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

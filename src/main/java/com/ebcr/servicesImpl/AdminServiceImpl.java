@@ -2,21 +2,20 @@ package com.ebcr.servicesImpl;
 
 import com.ebcr.models.Admin;
 import com.ebcr.models.Role;
-import com.ebcr.models.User;
 import com.ebcr.repositories.AdminRepository;
 import com.ebcr.repositories.RoleRepository;
-import com.ebcr.services.AdminService;
-import com.ebcr.services.MailService;
+import com.ebcr.services.IAdminService;
+import com.ebcr.services.IMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AdminServiceImpl  implements AdminService {
+public class AdminServiceImpl  implements IAdminService {
 
     @Autowired
-    private MailService mailService;
+    private IMailService mailService;
     @Autowired
     private AdminRepository adminRepository;
     @Autowired

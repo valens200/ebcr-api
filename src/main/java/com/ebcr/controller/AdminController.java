@@ -2,7 +2,7 @@ package com.ebcr.controller;
 
 import com.ebcr.dtos.CreateOrUpdateAdminDTO;
 import com.ebcr.models.Admin;
-import com.ebcr.services.AdminService;
+import com.ebcr.services.IAdminService;
 import com.ebcr.utils.Mapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 public class AdminController {
     @Autowired
-    private AdminService adminService;
+    private IAdminService adminService;
     @PostMapping("create")
     public Admin createAdmin(@RequestBody  CreateOrUpdateAdminDTO adminDTO){
        Admin admin = Mapper.getAdminFromAdminDTO(adminDTO, adminDTO.getPassword());
