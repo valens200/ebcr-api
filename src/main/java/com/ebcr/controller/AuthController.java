@@ -4,7 +4,7 @@ import com.ebcr.dtos.LoginRequestDTO;
 import com.ebcr.models.AppUser;
 import com.ebcr.models.RegisterRequestDTO;
 import com.ebcr.models.Role;
-import com.ebcr.services.IUserService;
+import com.ebcr.services.UserService;
 import com.ebcr.utils.AlgorithmGenerator;
 import com.ebcr.utils.Mapper;
 import com.ebcr.utils.TokenGenerator;
@@ -41,7 +41,7 @@ public class AuthController {
     AlgorithmGenerator algorithmGenerator;
     BCryptPasswordEncoder passwordEncoder;
     @Autowired
-    IUserService userService;
+    UserService userService;
     @GetMapping
    public String greeting(){
        return "Hello user well come to the authentication part";
