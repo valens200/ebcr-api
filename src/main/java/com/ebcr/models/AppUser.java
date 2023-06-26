@@ -28,7 +28,7 @@ import java.util.UUID;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"}), @UniqueConstraint(columnNames = {"phone_number"}), @UniqueConstraint(columnNames = "national_id")})
 @OnDelete(action = OnDeleteAction.CASCADE)
-public class User extends InitiatorAudit {
+public class AppUser extends InitiatorAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -76,7 +76,7 @@ public class User extends InitiatorAudit {
     @JoinColumn(name = "addressId", referencedColumnName = "addressId")
     private Address address;
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender) {
+    public AppUser(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -85,7 +85,7 @@ public class User extends InitiatorAudit {
         this.gender = gender;
     }
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender, Set<com.ebcr.models.Role> roles) {
+    public AppUser(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender, Set<com.ebcr.models.Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -95,7 +95,7 @@ public class User extends InitiatorAudit {
         this.roles = roles;
     }
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender, Set<com.ebcr.models.Role> roles, String password) {
+    public AppUser(String firstName, String lastName, String phoneNumber, String email, String nationalId, Gender gender, Set<com.ebcr.models.Role> roles, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -110,7 +110,7 @@ public class User extends InitiatorAudit {
         Role theRole = null;
 
         if (role.isPresent())
-            theRole = role.get().getName();
+            theRole = role.get().getRoleName();
         return theRole;
     }
 

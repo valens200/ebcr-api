@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Data
-public class Pastor extends  User {
+public class Pastor extends AppUser {
 
 
 }

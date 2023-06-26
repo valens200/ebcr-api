@@ -1,6 +1,6 @@
 package com.ebcr.services;
 
-import com.ebcr.models.User;
+import com.ebcr.models.AppUser;
 import com.ebcr.repositories.UserRepository;
 import com.ebcr.security.UserPrincipal;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class ICustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
        try{
-           User user = userRepository.findUserByUserName(s);
+           AppUser user = userRepository.findUserByUserName(s);
            if(user == null || user.getPassword() == "" || !StringUtils.hasText(user.getPassword())){
                log.error("Username provided is not found in the database.");
                throw  new UsernameNotFoundException("The provided username not found");

@@ -18,8 +18,6 @@ public class Config {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
-
-
     @Bean
     public  JavaMailSenderImpl javaMailSender(){
         return new JavaMailSenderImpl();

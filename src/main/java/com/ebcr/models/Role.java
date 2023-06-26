@@ -22,17 +22,17 @@ public class Role  extends InitiatorAudit {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name")
-    private com.ebcr.enums.Role name;
+    private com.ebcr.enums.Role roleName;
 
     @Column(name = "description")
     private String description;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private List<User> users = new ArrayList<>();
+    private List<AppUser> users = new ArrayList<>();
 
     public Role(com.ebcr.enums.Role name, String description) {
-        this.name = name;
+        this.roleName = name;
         this.description = description;
     }
 }

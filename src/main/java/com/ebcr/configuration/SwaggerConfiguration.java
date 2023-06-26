@@ -35,7 +35,7 @@ public class SwaggerConfiguration  extends WebMvcConfigurationSupport {
         this.servletContext = context;
     }
 
-    @Value("http://localhost:8000")
+    @Value("http://localhost:8080")
     private String host;
 
     @Override

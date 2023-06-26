@@ -1,7 +1,7 @@
 package com.ebcr.utils;
 
 import com.ebcr.models.Admin;
-import com.ebcr.models.User;
+import com.ebcr.models.AppUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -13,14 +13,14 @@ public class Mapper {
         return passwordEncoder.encode(password);
     }
 
-    public static User getUserFromDTO(Object object, String password){
-      User user = getUserFromDTO(object);
+    public static AppUser getUserFromDTO(Object object, String password){
+      AppUser user = getUserFromDTO(object);
        user.setPassword(passwordEncoder.encode(password));
        user.setId(null);
        return user;
     }
-    public  static User getUserFromDTO(Object object){
-        return modelMapper.map(object, User.class);
+    public  static AppUser getUserFromDTO(Object object){
+        return modelMapper.map(object, AppUser.class);
     }
     public  static Admin getAdminFromAdminDTO(Object object, String password){
         Admin admin = modelMapper.map(object, Admin.class);

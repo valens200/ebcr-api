@@ -1,7 +1,7 @@
 package com.ebcr.security;
 
 import com.ebcr.enums.Gender;
-import com.ebcr.models.User;
+import com.ebcr.models.AppUser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,9 +45,9 @@ public class UserPrincipal  implements UserDetails {
         return authorities;
     }
 
-    public  static UserPrincipal create(User user){
+    public  static UserPrincipal create(AppUser user){
         List<GrantedAuthority>authorities1 =new ArrayList<>();
-        authorities1 = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
+        authorities1 = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRoleName().name())).collect(Collectors.toList());
         return new UserPrincipal(
                 user.getId(),
                 user.getEmail(),

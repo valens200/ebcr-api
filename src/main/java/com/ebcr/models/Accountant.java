@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Accountant  extends User{
+public class Accountant  extends AppUser {
     @OneToOne
     private Church church;
     @OneToMany
